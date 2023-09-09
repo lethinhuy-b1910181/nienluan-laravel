@@ -91,7 +91,7 @@
                                     >
                                         Login
                                     </button>
-                                    <a href="{{ route('forget_password') }}"class="primary-color">Forget Password?</a>
+                                    <a href=""class="primary-color">Forget Password?</a>
                                 </div>
                             </div>
                             <div
@@ -101,37 +101,42 @@
                                 aria-labelledby="pills-profile-tab"
                                 tabindex="0"
                             >
-                                <div class="mb-3">
-                                    <label for="" class="form-label"
-                                        >Username</label
-                                    >
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                    />
-                                </div>
-                                <div class="mb-3">
-                                    <label for="" class="form-label"
-                                        >Password</label
-                                    >
-                                    <input
-                                        type="password"
-                                        class="form-control"
-                                    />
-                                </div>
-                                <div class="mb-3">
-                                    <button
-                                        type="submit"
-                                        class="btn btn-primary bg-website"
-                                    >
-                                        Login
-                                    </button>
-                                    <a
-                                        href="{{ route('forget_password') }}"
-                                        class="primary-color"
-                                        >Forget Password?</a
-                                    >
-                                </div>
+                                <form action="{{ route('company_login_submit') }}" method="post">   
+                                    @csrf
+                                    <div class="mb-3">
+                                        <label for="" class="form-label"
+                                            >Username</label
+                                        >
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            name="username"
+                                        />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label"
+                                            >Password</label
+                                        >
+                                        <input
+                                            type="password"
+                                            class="form-control"
+                                            name="password"
+                                        />
+                                    </div>
+                                    <div class="mb-3">
+                                        <button
+                                            type="submit"
+                                            class="btn btn-primary bg-website"
+                                        >
+                                            Login
+                                        </button>
+                                        <a
+                                            href="{{ route('company_forget_password') }}"
+                                            class="primary-color"
+                                            >Forget Password?</a
+                                        >
+                                    </div>
+                                </form>
                             </div>
                         </div>
 

@@ -34,6 +34,8 @@
                     </div>
                     <div class="col-md-6 right-side">
                         <ul class="right">
+
+                            @if(!Auth::guard('company')->check())
                             <li class="menu">
                                 <a href="{{ route('login') }}"
                                     ><i class="fas fa-sign-in-alt"></i> Đăng nhập</a
@@ -43,7 +45,15 @@
                                 <a href="{{ route('signup') }}"
                                     ><i class="fas fa-user"></i> Đăng kí</a
                                 >
+                            </li>   
+                            @else
+                            <li class="menu">
+                                <a href="{{ route('company_home') }}"
+                                    ><i class="fas fa-home"></i> Dashboard</a
+                                >
                             </li>
+                            @endif
+
                         </ul>
                     </div>
                 </div>

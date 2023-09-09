@@ -32,6 +32,8 @@ use App\Http\Controllers\Front\SignupController;
 use App\Http\Controllers\Front\ForgetPasswordController;
 // use App\Http\Controllers\Front\BlogController;
 
+use App\Http\Controllers\Company\CompanyController;
+
 
 
 
@@ -45,13 +47,24 @@ Route::get('pricing', [PricingController::class, 'index'])->name('pricing');
 Route::get('privacy-policy', [PrivacyController::class, 'index'])->name('privacy');
 Route::get('contact', [ContactController::class, 'index'])->name('contact');
 Route::post('contact_submit', [ContactController::class, 'submit'])->name('contact_submit');
+
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::get('create-account', [SignupController::class, 'index'])->name('signup');
-Route::get('forget-password', [ForgetPasswordController::class, 'index'])->name('forget_password');
+Route::get('forget-password/company', [ForgetPasswordController::class, 'company_forget_password'])->name('company_forget_password');
+Route::post('forget-password/company/submit', [ForgetPasswordController::class, 'company_forget_password_submit'])->name('company_forget_password_submit');
+Route::get('reset-password/company/{token}/{email}', [ForgetPasswordController::class,'company_reset_password'])->name('company_reset_password');
+Route::post('reset-password/company/submit', [ForgetPasswordController::class,'company_reset_password_submit'])->name('company_reset_password_submit');
 
+/* Company */
 Route::post('company_signup_submit', [SignupController::class, 'company_signup_submit'])->name('company_signup_submit');
 Route::get('company_signup_verify/{token}/{email}', [SignupController::class, 'company_signup_verify'])->name('company_signup_verify');
+Route::post('company_login_submit', [LoginController::class, 'company_login_submit'])->name('company_login_submit');
+Route::get('/company/logout', [LoginController::class,'company_logout'])->name('company_logout');    
 
+Route::middleware(['company:company'])->group(function(){
+    Route::get('/company/home', [CompanyController::class,'index'])->name('company_home');    
+
+});
 
 
 
