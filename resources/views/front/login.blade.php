@@ -91,11 +91,7 @@
                                     >
                                         Login
                                     </button>
-                                    <a
-                                        href="{{ route('forget-password') }}"
-                                        class="primary-color"
-                                        >Forget Password?</a
-                                    >
+                                    <a href="{{ route('forget_password') }}"class="primary-color">Forget Password?</a>
                                 </div>
                             </div>
                             <div
@@ -131,7 +127,7 @@
                                         Login
                                     </button>
                                     <a
-                                        href="{{ route('forget-password') }}"
+                                        href="{{ route('forget_password') }}"
                                         class="primary-color"
                                         >Forget Password?</a
                                     >
