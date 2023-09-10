@@ -66,59 +66,60 @@
                                 aria-labelledby="pills-home-tab"
                                 tabindex="0"
                             >
-                                <div class="mb-3">
-                                    <label for="" class="form-label"
-                                        >Candidate Name *</label
-                                    >
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                    />
-                                </div>
-                                <div class="mb-3">
-                                    <label for="" class="form-label"
-                                        >Username *</label
-                                    >
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                    />
-                                </div>
-                                <div class="mb-3">
-                                    <label for="" class="form-label"
-                                        >Email Address *</label
-                                    >
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                    />
-                                </div>
-                                <div class="mb-3">
-                                    <label for="" class="form-label"
-                                        >Password *</label
-                                    >
-                                    <input
-                                        type="password"
-                                        class="form-control"
-                                    />
-                                </div>
-                                <div class="mb-3">
-                                    <label for="" class="form-label"
-                                        >Confirm Password *</label
-                                    >
-                                    <input
-                                        type="password"
-                                        class="form-control"
-                                    />
-                                </div>
-                                <div class="mb-3">
-                                    <button
-                                        type="submit"
-                                        class="btn btn-primary bg-website"
-                                    >
-                                        Create Account
-                                    </button>
-                                </div>
+                                <form action="{{ route('candidate_signup_submit') }}" method="post">
+                                    @csrf
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Candidate Name *</label>
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            name="name"
+                                            value="{{ old('name') }}"
+                                        />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Username *</label>
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            name="username"
+                                            value="{{ old('username') }}"
+                                        />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Email Address *</label>
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            name="email"
+                                            value="{{ old('email') }}"
+                                        />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Password *</label>
+                                        <input
+                                            type="password"
+                                            class="form-control"
+                                            name="password"
+                                        />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Retype Password *</label>
+                                        <input
+                                            type="password"
+                                            class="form-control"
+                                            name="retyploe_password"
+                                        />
+                                    </div>
+                                    <div class="mb-3">
+                                        <button
+                                            type="submit"
+                                            class="btn btn-primary bg-website"
+                                        >
+                                            Create Account
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
                             <div
                                 class="tab-pane fade"
@@ -130,9 +131,7 @@
                                 <form action="{{ route('company_signup_submit') }}" method="post">
                                     @csrf
                                     <div class="mb-3">
-                                        <label for="" class="form-label"
-                                            >Company Name *</label
-                                        >
+                                        <label for="" class="form-label">Company Name *</label>
                                         <input
                                             type="text"
                                             class="form-control"
@@ -141,9 +140,7 @@
                                         />
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label"
-                                            >Contact Person Name *</label
-                                        >
+                                        <label for="" class="form-label">Contact Person Name *</label>
                                         <input
                                             type="text"
                                             class="form-control"
@@ -152,9 +149,7 @@
                                         />
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label"
-                                            >Username *</label
-                                        >
+                                        <label for="" class="form-label">Username *</label>
                                         <input
                                             type="text"
                                             class="form-control"
@@ -163,9 +158,7 @@
                                         />
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label"
-                                            >Email Address *</label
-                                        >
+                                        <label for="" class="form-label">Email Address *</label>
                                         <input
                                             type="text"
                                             class="form-control"
@@ -174,9 +167,7 @@
                                         />
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label"
-                                            >Password *</label
-                                        >
+                                        <label for="" class="form-label">Password *</label>
                                         <input
                                             type="password"
                                             class="form-control"
@@ -184,9 +175,7 @@
                                         />
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label"
-                                            >Retype Password *</label
-                                        >
+                                        <label for="" class="form-label">Retype Password *</label>
                                         <input
                                             type="password"
                                             class="form-control"

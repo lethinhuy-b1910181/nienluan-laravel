@@ -33,6 +33,7 @@ use App\Http\Controllers\Front\ForgetPasswordController;
 // use App\Http\Controllers\Front\BlogController;
 
 use App\Http\Controllers\Company\CompanyController;
+use App\Http\Controllers\Candidate\CandidateController;
 
 
 
@@ -50,10 +51,7 @@ Route::post('contact_submit', [ContactController::class, 'submit'])->name('conta
 
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::get('create-account', [SignupController::class, 'index'])->name('signup');
-Route::get('forget-password/company', [ForgetPasswordController::class, 'company_forget_password'])->name('company_forget_password');
-Route::post('forget-password/company/submit', [ForgetPasswordController::class, 'company_forget_password_submit'])->name('company_forget_password_submit');
-Route::get('reset-password/company/{token}/{email}', [ForgetPasswordController::class,'company_reset_password'])->name('company_reset_password');
-Route::post('reset-password/company/submit', [ForgetPasswordController::class,'company_reset_password_submit'])->name('company_reset_password_submit');
+
 
 /* Company */
 Route::post('company_signup_submit', [SignupController::class, 'company_signup_submit'])->name('company_signup_submit');
@@ -61,12 +59,34 @@ Route::get('company_signup_verify/{token}/{email}', [SignupController::class, 'c
 Route::post('company_login_submit', [LoginController::class, 'company_login_submit'])->name('company_login_submit');
 Route::get('/company/logout', [LoginController::class,'company_logout'])->name('company_logout');    
 
+Route::get('forget-password/company', [ForgetPasswordController::class, 'company_forget_password'])->name('company_forget_password');
+Route::post('forget-password/company/submit', [ForgetPasswordController::class, 'company_forget_password_submit'])->name('company_forget_password_submit');
+Route::get('reset-password/company/{token}/{email}', [ForgetPasswordController::class,'company_reset_password'])->name('company_reset_password');
+Route::post('reset-password/company/submit', [ForgetPasswordController::class,'company_reset_password_submit'])->name('company_reset_password_submit');
+
+/* Company Middleware*/
 Route::middleware(['company:company'])->group(function(){
     Route::get('/company/home', [CompanyController::class,'index'])->name('company_home');    
 
 });
 
+/* Candidate */
+Route::post('candidate_signup_submit', [SignupController::class, 'candidate_signup_submit'])->name('candidate_signup_submit');
+Route::get('candidate_signup_verify/{token}/{email}', [SignupController::class, 'candidate_signup_verify'])->name('candidate_signup_verify');
+Route::post('candidate_login_submit', [LoginController::class, 'candidate_login_submit'])->name('candidate_login_submit');
+Route::get('/candidate/logout', [LoginController::class,'candidate_logout'])->name('candidate_logout');    
 
+Route::get('forget-password/candidate', [ForgetPasswordController::class, 'candidate_forget_password'])->name('candidate_forget_password');
+Route::post('forget-password/candidate/submit', [ForgetPasswordController::class, 'candidate_forget_password_submit'])->name('candidate_forget_password_submit');
+Route::get('reset-password/candidate/{token}/{email}', [ForgetPasswordController::class,'candidate_reset_password'])->name('candidate_reset_password');
+Route::post('reset-password/candidate/submit', [ForgetPasswordController::class,'candidate_reset_password_submit'])->name('candidate_reset_password_submit');
+
+
+/* Candidate Middleware*/
+Route::middleware(['candidate:candidate'])->group(function(){
+    Route::get('/candidate/home', [CandidateController::class,'index'])->name('candidate_home');    
+
+});
 
 
 /* Admin */
@@ -78,6 +98,7 @@ Route::post('/admin/forget-password-submit', [AdminLoginController::class,'forge
 Route::get('/admin/reset-password/{token}/{email}', [AdminLoginController::class,'reset_password'])->name('admin_reset_password');
 Route::post('/admin/reset-password-submit', [AdminLoginController::class,'reset_password_submit'])->name('admin_reset_password_submit');
 
+/* Admin Middleware*/
 Route::middleware(['admin:admin'])->group(function(){
     Route::get('/admin/home', [AdminHomeController::class,'index'])->name('admin_home');    
     
