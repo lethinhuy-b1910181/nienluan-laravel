@@ -1,10 +1,10 @@
 @extends('admin.layout.app')
 
-@section('heading','Create Job Category')
+@section('heading','Thêm Ngành Nghề Mới')
 
 @section('button')
 <div>
-    <a href="{{ route('admin_job_category') }}" class="btn btn-primary"><i class="fas fa-plus"></i> View All</a>
+    <a href="{{ route('admin_job_category') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Xem tất cả</a>
 </div>
 @endsection
 
@@ -17,15 +17,15 @@
                     <form action="{{ route('admin_job_category_store') }}" method="post" >
                         @csrf
                         <div class="form-group mb-3">
-                            <label>Category Name *</label>
+                            <label>Tên ngành nghề</label>
                             <input type="text" class="form-control" name="name" >
                         </div>
                         <div class="form-group mb-3">
-                            <label>Category Icon *</label>
+                            <label>Icon</label>
                             <input type="text" class="form-control " name="icon" >
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Thêm</button>
                         </div>
                     </form>
                 </div>

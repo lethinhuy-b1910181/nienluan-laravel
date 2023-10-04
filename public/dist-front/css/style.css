@@ -1,7 +1,6 @@
 body {
     font-family: "Work Sans", sans-serif;
     font-size: 15px;
-    background-color: #ECF7F3;
 }
 
 select,
@@ -70,13 +69,9 @@ input {
     height: 200px !important;
 }
 
-.btn:first-child:hover,
-:not(.btn-check)+.btn:hover {
-    color: #fff;
-    background-color: #2d2d2d;
-    border-color: #2d2d2d;
-}
-
+/* .mb-0{
+    margin-bottom: 0 !important;
+} */
 .badge.bg-success {
     background: #11af33 !important;
 }
@@ -279,7 +274,7 @@ select {
     }
 
     .slider .text {
-        padding-top: 20px !important;
+        padding-top: 40px !important;
     }
 
     .slider .text h2 {
@@ -447,8 +442,8 @@ select {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top center;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: 140px;
+    padding-bottom: 140px;
 }
 
 .slider .bg {
@@ -458,38 +453,37 @@ select {
     width: 100%;
     height: 100%;
     opacity: 0.6;
-    /* background: #000; */
+    background: #000;
 }
 
 .slider .text {
     position: relative;
     z-index: 99;
-    text-align: start;
+    text-align: center;
 }
 
 .slider .text h2 {
-    font-size: 35px;
-    color: #78bc35;
+    font-size: 45px;
+    color: #fff;
     margin: 0;
-    margin-bottom: 10px;
-    /* justify-content: left; */
+    margin-bottom: 15px;
 }
 
 .slider .text p {
     font-size: 20px;
-    color: #78bc35;
+    color: #fff;
     letter-spacing: 0.5px;
     margin: 0 250px;
 }
 
 /* Search Section */
 .search-section {
-    margin-top: 15px;
+    margin-top: 30px;
 }
 
 .search-section .inner {
     /* border: 1px dashed #e0e0e0; */
-    padding: 20px 15px;
+    padding: 20px 20px;
     position: relative;
     z-index: 99999;
     border-radius: 6px;
@@ -497,26 +491,24 @@ select {
 
 .search-section .form-control,
 .search-section .form-select {
-    font-size: 17px;
+    font-size: 20px;
     font-weight: 600;
-    height: 55px !important;
+    height: 50px;
 }
-
-
 
 .search-section button[type="submit"] {
     width: 100%;
-    font-size: 17px;
+    font-size: 20px;
     background: #46bc29;
     border: 1px solid #46bc29;
     font-weight: 600;
-    height: 55px;
+    height: 50px;
 }
 
 .search-section button[type="submit"]:hover {
-    background: #40aa25;
-    border-color: #72B530;
-    /* color: #46bc29; */
+    background: #fff;
+    border-color: #fff;
+    color: #46bc29;
 }
 
 @media (max-width: 767px) {
@@ -530,7 +522,7 @@ select {
 
 /* Home Page - Why Choose */
 .why-choose {
-    padding-top: 90px;
+    padding-top: 70px;
     padding-bottom: 50px;
     background-repeat: no-repeat;
     background-size: cover;
@@ -547,14 +539,13 @@ select {
     width: 100%;
     height: 100%;
     opacity: 0.6;
-    /* background: #000; */
+    background: #000;
     z-index: 1;
 }
 
 .why-choose .heading {
     text-align: center;
-    margin-bottom: 70px;
-
+    margin-bottom: 50px;
     position: relative;
     z-index: 2;
 }
@@ -562,36 +553,22 @@ select {
 .why-choose .heading h2 {
     font-size: 30px;
     font-weight: 700;
-    color: black;
-    margin-bottom: 20px;
+    color: #fff;
 }
 
 .why-choose .heading p {
-
-    font-size: 17px;
-    color: #A6A6A8;
-    font-weight: 500;
+    color: #fff;
 }
 
 .why-choose .inner {
-    /* margin-top: 40px; */
     margin-bottom: 40px;
     position: relative;
     z-index: 2;
-    box-shadow: 0px 6px 32px rgba(0, 0, 0, .08);
-    background-color: white;
-    color: black;
-    box-sizing: border-box;
-    height: 300px;
-
-
-
 }
 
 .why-choose .inner .icon {
     text-align: center;
     margin-bottom: 20px;
-
 }
 
 .why-choose .inner .icon i {
@@ -600,11 +577,9 @@ select {
     line-height: 70px;
     text-align: center;
     border: 1px solid #fff;
-    color: black;
+    color: #fff;
     border-radius: 6px;
     font-size: 35px;
-    margin-top: 30px;
-
 }
 
 .why-choose .inner .text {
@@ -612,17 +587,14 @@ select {
 }
 
 .why-choose .inner .text h2 {
-    font-size: 26px;
-    color: black;
+    font-size: 24px;
+    color: #fff;
     font-weight: 700;
-    margin-bottom: 20px;
-
-
 }
 
 .why-choose .inner .text p {
-    font-size: 18px;
-    color: black;
+    font-size: 14px;
+    color: #fff;
 }
 
 /* Job Category */
@@ -633,7 +605,7 @@ select {
 
 .job-category .heading {
     text-align: center;
-    margin-bottom: 70px;
+    margin-bottom: 30px;
 }
 
 .job-category .heading h2 {
@@ -647,13 +619,12 @@ select {
 
 .job-category .item {
     margin-bottom: 25px;
-    /* border: 1px solid #cccccc; */
+    border: 1px solid #cccccc;
     padding: 15px 10px;
     border-radius: 4px;
     text-align: center;
     transition: all 0.5s;
     position: relative;
-    box-shadow: 0px 6px 32px rgba(0, 0, 0, .08);
 }
 
 .job-category .item a {
@@ -736,14 +707,12 @@ select {
 
 .job .item {
     margin-bottom: 25px;
-    /* border: 1px solid #cccccc; */
+    border: 1px solid #cccccc;
     padding: 15px 10px;
     border-radius: 4px;
     text-align: center;
     transition: all 0.5s;
     position: relative;
-    background-color: white;
-    box-shadow: 0px 6px 32px rgba(0, 0, 0, .08);
 }
 
 .job .item .logo {
@@ -1084,33 +1053,24 @@ select {
 
 .blog .item {
     margin-bottom: 40px;
-    box-shadow: 0px 6px 32px rgba(0, 0, 0, .08);
-    background-color: white;
-    border-radius: 10px;
 }
 
 .blog .item .photo {
-    margin-bottom: 20px;
-
+    margin-bottom: 10px;
 }
 
 .blog .item .photo img {
     width: 100%;
     height: 220px;
     object-fit: cover;
-    border-radius: 10px;
 }
 
 .blog .item .text h2 {
     font-size: 18px;
-    margin: 15px;
-
-
 }
 
 .blog .item .text h2 a {
     color: #333;
-
 }
 
 .blog .item .text .short-des p {
@@ -1118,15 +1078,11 @@ select {
     margin-bottom: 10px;
     font-weight: 400;
     font-size: 14px;
-    margin: 15px;
-
 }
 
 .blog .item .text .button a {
     background: #46bc29;
     border: 0;
-    margin: 15px;
-
 }
 
 @media (max-width: 1199px) {
@@ -1354,9 +1310,6 @@ select {
 .page-content {
     padding-top: 40px;
     padding-bottom: 20px;
-    /* margin-right: 70px;
-    margin-left: 70px;
-    background-color: #fff; */
 }
 
 .page-content .featured-photo {
@@ -1390,10 +1343,7 @@ select {
 
 .page-content .main-text {
     margin-bottom: 25px;
-    background-color: #fff;
-    box-shadow: 0px 6px 32px rgba(0, 0, 0, .08);
 }
-
 
 .page-content .share-content {
     margin-bottom: 20px;
@@ -1911,7 +1861,6 @@ select {
     height: 140px;
     object-fit: cover;
     border-radius: 6px;
-
 }
 
 .video-all .item {
@@ -2198,10 +2147,10 @@ select {
 }
 
 .select2-container--bootstrap .select2-selection--single {
-    height: 55px !important;
-    line-height: 55px !important;
+    height: 50px !important;
+    line-height: 50px !important;
     padding-top: 0 !important;
-    font-size: 17px !important;
+    font-size: 20px !important;
 }
 
 h4.resume {
@@ -2210,28 +2159,6 @@ h4.resume {
     font-weight: 700;
 }
 
-.why-choose,
-.job-category {
-    background-color: white !important;
-
-}
-
-/* Pagination */
-
-ul.pagination .active>.page-link,
-ul.pagination .page-link.active {
-    background-color: #46bc29;
-    border-color: #46bc29;
-}
-
-ul.pagination .page-link {
-    color: #46bc29;
-}
-
-ul.pagination .active>.page-link {
-    color: white;
-}
-
-ul.pagination {
-    justify-content: center;
+.datepicker-dropdown{
+    z-index: 99999  !important;
 }

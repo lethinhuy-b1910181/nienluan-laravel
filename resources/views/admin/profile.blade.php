@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 
-@section('heading','Edit Profile')
+@section('heading','Cập Nhật Thông Tin Cá Nhân')
 
 @section('main_content')
 <div class="section-body">
@@ -17,24 +17,24 @@
                             </div>
                             <div class="col-md-9">
                                 <div class="mb-4">
-                                    <label class="form-label">Name *</label>
+                                    <label class="form-label">Họ và Tên *</label>
                                     <input type="text" class="form-control" name="name" value="{{ Auth::guard('admin')->user()->name}}">
                                 </div>
                                 <div class="mb-4">
-                                    <label class="form-label">Email *</label>
+                                    <label class="form-label">Địa chỉ Email *</label>
                                     <input type="text" class="form-control" name="email" value="{{ Auth::guard('admin')->user()->email}}">
                                 </div>
                                 <div class="mb-4">
-                                    <label class="form-label">Password</label>
+                                    <label class="form-label">Mật khẩu</label>
                                     <input type="password" class="form-control" name="password">
                                 </div>
                                 <div class="mb-4">
-                                    <label class="form-label">Retype Password</label>
+                                    <label class="form-label">Xác nhận mật khẩu</label>
                                     <input type="password" class="form-control" name="retype_password">
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label"></label>
-                                    <button type="submit" class="btn btn-primary">Update</button>
+                                    <button type="submit" class="btn btn-primary">Cập nhật</button>
                                 </div>
                             </div>
                         </div>

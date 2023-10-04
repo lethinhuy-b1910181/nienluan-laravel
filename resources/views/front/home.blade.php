@@ -41,18 +41,11 @@
                                                     
                                                     {{ $home_page_data->job_location }}
                                                 </option>
-                                                <option value="" >
-                                                    Cần Thơ
-                                                </option>
-                                                <option value="">
-                                                    Hồ Chí Minh
-                                                </option>
-                                                <option value="">
-                                                    Hà Nội
-                                                </option>
-                                                <option value="">
-                                                    Khác
-                                                </option>
+                                                @foreach ($job_locations as $item)
+                                                    <option value="{{ $item->id }}">
+                                                        {{ $item->name }}
+                                                    </option>
+                                                @endforeach
                                                
                                             </select>
                                         </div>
@@ -98,103 +91,6 @@
     </div>
 </div>
 
-
-
-<div
-    class="testimonial"
-    style="background-image: url({{ asset('uploads/banner11.jpg') }})"
->
-    <div class="bg"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h2 class="main-header">Our Happy Clients</h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="testimonial-carousel owl-carousel">
-                    <div class="item">
-                        <div class="photo">
-                            <img src="{{ asset('uploads/t1.jpg') }}" alt="" />
-                        </div>
-                        <div class="text">
-                            <h4>Robert Krol</h4>
-                            <p>CEO, ABC Company</p>
-                        </div>
-                        <div class="description">
-                            <p>
-                                Lorem ipsum dolor sit amet, an labores
-                                explicari qui, eu nostrum copiosae
-                                argumentum has. Latine propriae quo no,
-                                unum ridens. Lorem ipsum dolor sit amet,
-                                an labores explicari qui, eu nostrum
-                                copiosae argumentum has. Latine propriae
-                                quo no, unum ridens.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="photo">
-                            <img src="{{ asset('uploads/t2.jpg') }}" alt="" />
-                        </div>
-                        <div class="text">
-                            <h4>Sal Harvey</h4>
-                            <p>Director, DEF Company</p>
-                        </div>
-                        <div class="description">
-                            <p>
-                                Lorem ipsum dolor sit amet, an labores
-                                explicari qui, eu nostrum copiosae
-                                argumentum has. Latine propriae quo no,
-                                unum ridens. Lorem ipsum dolor sit amet,
-                                an labores explicari qui, eu nostrum
-                                copiosae argumentum has. Latine propriae
-                                quo no, unum ridens.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-@if ($home_page_data->why_choose_status == 'Show')
-    <div class="why-choose" >
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="heading">
-                        <h2>{{ $home_page_data->why_choose_heading }}</h2>
-                        <p>
-                            {{ $home_page_data->why_choose_subheading }}
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                @foreach ($why_choose_items as $item)
-                    <div class="col-md-4">
-                        <div class="inner">
-                            <div class="icon">
-                                <i class="{{ $item->icon }}"></i>
-                            </div>
-                            <div class="text">
-                                <h2>{{ $item->heading }}</h2>
-                                <p>
-                                    {!! nl2br($item->text) !!}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach       
-            </div>
-        </div>
-    </div>
-@endif
-
-
 @if($home_page_data->job_category_status == 'Show')
     <div class="job-category">
         <div class="container">
@@ -234,6 +130,41 @@
         </div>
     </div>
 @endif
+
+@if ($home_page_data->why_choose_status == 'Show')
+    <div class="why-choose" style="background-image: url({{ asset('uploads/banner3.jpg') }})"> >
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="heading">
+                        <h2>{{ $home_page_data->why_choose_heading }}</h2>
+                        <p>
+                            {{ $home_page_data->why_choose_subheading }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @foreach ($why_choose_items as $item)
+                    <div class="col-md-4">
+                        <div class="inner">
+                            <div class="icon">
+                                <i class="{{ $item->icon }}"></i>
+                            </div>
+                            <div class="text">
+                                <h2>{{ $item->heading }}</h2>
+                                <p>
+                                    {!! nl2br($item->text) !!}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach       
+            </div>
+        </div>
+    </div>
+@endif
+
 
 @if ($home_page_data->feature_job_status == 'Show')
     <div class="job">
@@ -487,6 +418,63 @@
     </div>
 @endif
 
+
+<div class="testimonial"style="background-image: url({{ asset('uploads/banner11.jpg') }})">
+    <div class="bg"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="main-header">Our Happy Clients</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="testimonial-carousel owl-carousel">
+                    <div class="item">
+                        <div class="photo">
+                            <img src="{{ asset('uploads/t1.jpg') }}" alt="" />
+                        </div>
+                        <div class="text">
+                            <h4>Robert Krol</h4>
+                            <p>CEO, ABC Company</p>
+                        </div>
+                        <div class="description">
+                            <p>
+                                Lorem ipsum dolor sit amet, an labores
+                                explicari qui, eu nostrum copiosae
+                                argumentum has. Latine propriae quo no,
+                                unum ridens. Lorem ipsum dolor sit amet,
+                                an labores explicari qui, eu nostrum
+                                copiosae argumentum has. Latine propriae
+                                quo no, unum ridens.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="photo">
+                            <img src="{{ asset('uploads/t2.jpg') }}" alt="" />
+                        </div>
+                        <div class="text">
+                            <h4>Sal Harvey</h4>
+                            <p>Director, DEF Company</p>
+                        </div>
+                        <div class="description">
+                            <p>
+                                Lorem ipsum dolor sit amet, an labores
+                                explicari qui, eu nostrum copiosae
+                                argumentum has. Latine propriae quo no,
+                                unum ridens. Lorem ipsum dolor sit amet,
+                                an labores explicari qui, eu nostrum
+                                copiosae argumentum has. Latine propriae
+                                quo no, unum ridens.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 

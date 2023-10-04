@@ -5,10 +5,19 @@ use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminJobCategoryController;
+use App\Http\Controllers\Admin\AdminJobLocationController;
+use App\Http\Controllers\Admin\AdminJobExperienceController;
+use App\Http\Controllers\Admin\AdminJobTypeController;
+use App\Http\Controllers\Admin\AdminJobGenderController;
+use App\Http\Controllers\Admin\AdminJobSalaryController;
 use App\Http\Controllers\Admin\AdminWhyChooseController;
 use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\AdminFaqController;
 use App\Http\Controllers\Admin\AdminPackageController;
+use App\Http\Controllers\Admin\AdminCompanyLocationController;
+use App\Http\Controllers\Admin\AdminCompanyIndustryController;
+use App\Http\Controllers\Admin\AdminCompanySizeController;
+
 
 use App\Http\Controllers\Admin\AdminHomePageController;
 use App\Http\Controllers\Admin\AdminBlogPageController;
@@ -67,8 +76,29 @@ Route::post('reset-password/company/submit', [ForgetPasswordController::class,'c
 /* Company Middleware*/
 Route::middleware(['company:company'])->group(function(){
     Route::get('/company/home', [CompanyController::class,'index'])->name('company_home');    
+    Route::get('/company/make-payment', [CompanyController::class,'make_payment'])->name('company_make_payment');    
+    Route::get('/company/orders', [CompanyController::class,'orders'])->name('company_orders');    
+
+    Route::post('/company/paypal/payment', [CompanyController::class, 'paypal'])->name('company_paypal');
+    Route::get('/company/paypal/success', [CompanyController::class, 'paypal_success'])->name('company_paypal_success');
+    Route::get('/company/paypal/cancel', [CompanyController::class, 'paypal_cancel'])->name('company_paypal_cancel');
+
+    Route::get('/company/edit-profile', [CompanyController::class,'edit_profile'])->name('company_edit_profile');    
+    Route::post('/company/edit-profile/update', [CompanyController::class,'edit_profile_update'])->name('company_edit_profile_update');    
+
+    Route::get('/company/photo', [CompanyController::class,'photo'])->name('company_photo');    
+    Route::post('/company/photo/submit', [CompanyController::class,'photo_submit'])->name('company_photo_submit');    
+    Route::get('/company/photo/delete/{id}', [CompanyController::class,'photo_delete'])->name('company_photo_delete');    
+
+    Route::get('/company/jobs', [CompanyController::class,'jobs'])->name('company_job');    
+    Route::get('/company/create-job', [CompanyController::class,'job_create'])->name('company_job_create');    
+    Route::post('/company/create-job-submit', [CompanyController::class,'job_create_submit'])->name('company_job_create_submit');    
+    Route::get('/company/edit-job/{id}', [CompanyController::class,'job_edit'])->name('company_job_edit');    
+    Route::post('/company/edit-job/update/{id}', [CompanyController::class,'job_edit_update'])->name('company_job_edit_update');    
+    Route::get('/company/job-delete/{id}', [CompanyController::class,'job_delete'])->name('company_job_delete');    
 
 });
+/* End  Company */
 
 /* Candidate */
 Route::post('candidate_signup_submit', [SignupController::class, 'candidate_signup_submit'])->name('candidate_signup_submit');
@@ -80,13 +110,12 @@ Route::get('forget-password/candidate', [ForgetPasswordController::class, 'candi
 Route::post('forget-password/candidate/submit', [ForgetPasswordController::class, 'candidate_forget_password_submit'])->name('candidate_forget_password_submit');
 Route::get('reset-password/candidate/{token}/{email}', [ForgetPasswordController::class,'candidate_reset_password'])->name('candidate_reset_password');
 Route::post('reset-password/candidate/submit', [ForgetPasswordController::class,'candidate_reset_password_submit'])->name('candidate_reset_password_submit');
-
-
 /* Candidate Middleware*/
 Route::middleware(['candidate:candidate'])->group(function(){
     Route::get('/candidate/home', [CandidateController::class,'index'])->name('candidate_home');    
 
 });
+/* End Candidate */
 
 
 /* Admin */
@@ -136,6 +165,62 @@ Route::middleware(['admin:admin'])->group(function(){
     Route::post('/admin/job-category/update/{id}', [AdminJobCategoryController::class,'update'])->name('admin_job_category_update');    
     Route::get('/admin/job-category/delete/{id}', [AdminJobCategoryController::class,'delete'])->name('admin_job_category_delete');    
 
+    Route::get('/admin/job-location/view', [AdminJobLocationController::class,'index'])->name('admin_job_location');    
+    Route::get('/admin/job-location/create', [AdminJobLocationController::class,'create'])->name('admin_job_location_create');    
+    Route::post('/admin/job-location/store', [AdminJobLocationController::class,'store'])->name('admin_job_location_store');    
+    Route::get('/admin/job-location/edit/{id}', [AdminJobLocationController::class,'edit'])->name('admin_job_location_edit');    
+    Route::post('/admin/job-location/update/{id}', [AdminJobLocationController::class,'update'])->name('admin_job_location_update');    
+    Route::get('/admin/job-location/delete/{id}', [AdminJobLocationController::class,'delete'])->name('admin_job_location_delete');    
+    
+    Route::get('/admin/job-experience/view', [AdminJobExperienceController::class,'index'])->name('admin_job_experience');    
+    Route::get('/admin/job-experience/create', [AdminJobExperienceController::class,'create'])->name('admin_job_experience_create');    
+    Route::post('/admin/job-experience/store', [AdminJobExperienceController::class,'store'])->name('admin_job_experience_store');    
+    Route::get('/admin/job-experience/edit/{id}', [AdminJobExperienceController::class,'edit'])->name('admin_job_experience_edit');    
+    Route::post('/admin/job-experience/update/{id}', [AdminJobExperienceController::class,'update'])->name('admin_job_experience_update');    
+    Route::get('/admin/job-experience/delete/{id}', [AdminJobExperienceController::class,'delete'])->name('admin_job_experience_delete');    
+    
+    Route::get('/admin/job-type/view', [AdminJobTypeController::class,'index'])->name('admin_job_type');    
+    Route::get('/admin/job-type/create', [AdminJobTypeController::class,'create'])->name('admin_job_type_create');    
+    Route::post('/admin/job-type/store', [AdminJobTypeController::class,'store'])->name('admin_job_type_store');    
+    Route::get('/admin/job-type/edit/{id}', [AdminJobTypeController::class,'edit'])->name('admin_job_type_edit');    
+    Route::post('/admin/job-type/update/{id}', [AdminJobTypeController::class,'update'])->name('admin_job_type_update');    
+    Route::get('/admin/job-type/delete/{id}', [AdminJobTypeController::class,'delete'])->name('admin_job_type_delete');    
+    
+    Route::get('/admin/job-gender/view', [AdminJobGenderController::class,'index'])->name('admin_job_gender');    
+    Route::get('/admin/job-gender/create', [AdminJobGenderController::class,'create'])->name('admin_job_gender_create');    
+    Route::post('/admin/job-gender/store', [AdminJobGenderController::class,'store'])->name('admin_job_gender_store');    
+    Route::get('/admin/job-gender/edit/{id}', [AdminJobGenderController::class,'edit'])->name('admin_job_gender_edit');    
+    Route::post('/admin/job-gender/update/{id}', [AdminJobGenderController::class,'update'])->name('admin_job_gender_update');    
+    Route::get('/admin/job-gender/delete/{id}', [AdminJobGenderController::class,'delete'])->name('admin_job_gender_delete');    
+    
+    Route::get('/admin/job-salary/view', [AdminJobSalaryController::class,'index'])->name('admin_job_salary');    
+    Route::get('/admin/job-salary/create', [AdminJobSalaryController::class,'create'])->name('admin_job_salary_create');    
+    Route::post('/admin/job-salary/store', [AdminJobSalaryController::class,'store'])->name('admin_job_salary_store');    
+    Route::get('/admin/job-salary/edit/{id}', [AdminJobSalaryController::class,'edit'])->name('admin_job_salary_edit');    
+    Route::post('/admin/job-salary/update/{id}', [AdminJobSalaryController::class,'update'])->name('admin_job_salary_update');    
+    Route::get('/admin/job-salary/delete/{id}', [AdminJobSalaryController::class,'delete'])->name('admin_job_salary_delete');    
+
+    Route::get('/admin/company-location/view', [AdminCompanyLocationController::class,'index'])->name('admin_company_location');    
+    Route::get('/admin/company-location/create', [AdminCompanyLocationController::class,'create'])->name('admin_company_location_create');    
+    Route::post('/admin/company-location/store', [AdminCompanyLocationController::class,'store'])->name('admin_company_location_store');    
+    Route::get('/admin/company-location/edit/{id}', [AdminCompanyLocationController::class,'edit'])->name('admin_company_location_edit');    
+    Route::post('/admin/company-location/update/{id}', [AdminCompanyLocationController::class,'update'])->name('admin_company_location_update');    
+    Route::get('/admin/company-location/delete/{id}', [AdminCompanyLocationController::class,'delete'])->name('admin_company_location_delete');    
+    
+    Route::get('/admin/company-industry/view', [AdminCompanyIndustryController::class,'index'])->name('admin_company_industry');    
+    Route::get('/admin/company-industry/create', [AdminCompanyIndustryController::class,'create'])->name('admin_company_industry_create');    
+    Route::post('/admin/company-industry/store', [AdminCompanyIndustryController::class,'store'])->name('admin_company_industry_store');    
+    Route::get('/admin/company-industry/edit/{id}', [AdminCompanyIndustryController::class,'edit'])->name('admin_company_industry_edit');    
+    Route::post('/admin/company-industry/update/{id}', [AdminCompanyIndustryController::class,'update'])->name('admin_company_industry_update');    
+    Route::get('/admin/company-industry/delete/{id}', [AdminCompanyIndustryController::class,'delete'])->name('admin_company_industry_delete');    
+
+    Route::get('/admin/company-size/view', [AdminCompanySizeController::class,'index'])->name('admin_company_size');    
+    Route::get('/admin/company-size/create', [AdminCompanySizeController::class,'create'])->name('admin_company_size_create');    
+    Route::post('/admin/company-size/store', [AdminCompanySizeController::class,'store'])->name('admin_company_size_store');    
+    Route::get('/admin/company-size/edit/{id}', [AdminCompanySizeController::class,'edit'])->name('admin_company_size_edit');    
+    Route::post('/admin/company-size/update/{id}', [AdminCompanySizeController::class,'update'])->name('admin_company_size_update');    
+    Route::get('/admin/company-size/delete/{id}', [AdminCompanySizeController::class,'delete'])->name('admin_company_size_delete');    
+
     Route::get('/admin/why-choose/view', [AdminWhyChooseController::class,'index'])->name('admin_why_choose_item');    
     Route::get('/admin/why-choose/create', [AdminWhyChooseController::class,'create'])->name('admin_why_choose_item_create');    
     Route::post('/admin/why-choose/store', [AdminWhyChooseController::class,'store'])->name('admin_why_choose_item_store');    
@@ -163,9 +248,8 @@ Route::middleware(['admin:admin'])->group(function(){
     Route::get('/admin/package/edit/{id}', [AdminPackageController::class,'edit'])->name('admin_package_edit');    
     Route::post('/admin/package/update/{id}', [AdminPackageController::class,'update'])->name('admin_package_update');    
     Route::get('/admin/package/delete/{id}', [AdminPackageController::class,'delete'])->name('admin_package_delete');    
- 
-   
+  
 });
-
+/* End Admin */
 
 

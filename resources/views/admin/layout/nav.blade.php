@@ -19,10 +19,10 @@
                     
                     <li>
                         <a href="{{ route('admin_profile') }}" class="dropdown-item">
-                            <i class="far fa-user me-2"></i> Edit Profile
+                            <i class="far fa-user me-2"></i> Cập Nhật Thông Tin
                         </a>
                     </li>
-                <li><a href="{{ route('admin_logout') }}" class="dropdown-item"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                <li><a href="{{ route('admin_logout') }}" class="dropdown-item"><i class="fas fa-sign-out-alt me-2"></i> Đăng xuất</a></li>
             </ul>
 
             
